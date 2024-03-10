@@ -71,7 +71,6 @@ describe('Tournament', () => {
     expect(tournament.winner).toBe('Équipe 1');
   });
 
-<<<<<<< HEAD
   test('devrait retirer correctement une équipe', () => {
     const team1 = { name: 'Équipe 1', players: ['Alice', 'Bob'] };
     const team2 = { name: 'Équipe 2', players: ['Charlie', 'David'] };
@@ -100,7 +99,7 @@ test('devrait retourner le nombre correct d\'équipes', () => {
   expect(tournament.getNumberOfTeams()).toBe(3);
   //Ici, on a donc bien 3 équipes qui sont censés être crées
   });
-=======
+  
   test('Erreur - Equipe vide', () => {
     const team = { name: 'Les cowboys', players: [] };
     expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
