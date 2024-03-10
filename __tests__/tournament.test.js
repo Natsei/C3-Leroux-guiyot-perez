@@ -26,6 +26,11 @@ describe('Tournament', () => {
     expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
   });
 
+  test('Erreur - Equipe vide', () => {
+    const team = { name: 'Les cowboys', players: [] };
+    expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
+  });
+
   test('devrait lancer une erreur lors du démarrage du tournoi avec un nombre insuffisant d\'équipes', () => {
     const team = { name: 'Les Solitaires', players: ['Alice'] };
     tournament.addTeam(team);
