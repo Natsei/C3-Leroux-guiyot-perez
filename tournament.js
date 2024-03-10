@@ -12,6 +12,10 @@ class Tournament {
       if (!team.name || !team.players || team.players.length === 0) {
         throw new Error("Données de l'équipe invalides");
       }
+
+      if (this.teams.some(existingTeam => existingTeam.name === team.name)) {
+        throw new Error("Équipe déjà existante");
+      }
       this.teams.push(team);
     }
 

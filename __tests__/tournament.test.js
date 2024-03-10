@@ -13,6 +13,14 @@ describe('Tournament', () => {
     expect(tournament.teams).toContain(team);
   });
 
+  test('Erreur - Equipes en double', () => {
+    const team1 = { name: 'Les Champions', players: ['Alice', 'Bob'] };
+    const team2 = { name: 'Les Champions', players: ['Alice', 'Bob'] };
+    tournament.addTeam(team1);
+    expect(() => tournament.addTeam(team2)).toThrow("Équipe déjà existante");
+
+  });
+
   test('devrait lancer une erreur lors de l\'ajout d\'une équipe invalide', () => {
     const team = { name: '', players: [] };
     expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
@@ -49,7 +57,16 @@ describe('Tournament', () => {
     tournament.addTeam(team1);
     tournament.addTeam(team2);
     expect(tournament.getTeamNames()).toEqual(['Équipe 1', 'Équipe 2']);
+  });
+
+  test('devrait retourner les noms des équipes correctement', () => {
+    const team1 = { name: 'Équipe 1', players: ['Alice', 'Bob'] };
+    const team2 = { name: 'Équipe 2', players: ['Charlie', 'David'] };
+    tournament.addTeam(team1);
+    tournament.addTeam(team2);
+    expect(tournament.getTeamNames()).toEqual(['Équipe 1', 'Équipe 2']);
   });  
+
 
   test('devrait terminer le tournoi lorsque tous les résultats des matchs sont enregistrés', () => {
     const team1 = { name: 'Équipe 1', players: ['Alice', 'Bob'] };
