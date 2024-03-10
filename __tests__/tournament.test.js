@@ -32,6 +32,10 @@ describe('Tournament', () => {
     expect(() => tournament.startTournament()).toThrow("Pas assez d'équipes pour commencer le tournoi");
   });
 
+  test('Erreur - Tournoi sans équipe', () => {
+    expect(() => tournament.startTournament()).toThrow("Pas assez d'équipes pour commencer le tournoi");
+  });
+
   test('devrait planifier correctement les matchs lors du démarrage du tournoi', () => {
     const team1 = { name: 'Équipe 1', players: ['Alice', 'Bob'] };
     const team2 = { name: 'Équipe 2', players: ['Charlie', 'David'] };
