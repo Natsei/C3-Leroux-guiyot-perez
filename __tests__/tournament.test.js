@@ -13,41 +13,14 @@ describe('Tournament', () => {
     expect(tournament.teams).toContain(team);
   });
 
-  test('Erreur - Equipes en double', () => {
-    const team1 = { name: 'Les Champions', players: ['Alice', 'Bob'] };
-    const team2 = { name: 'Les Champions', players: ['Alice', 'Bob'] };
-    tournament.addTeam(team1);
-    expect(() => tournament.addTeam(team2)).toThrow("Équipe déjà existante");
-
-  });
-
   test('devrait lancer une erreur lors de l\'ajout d\'une équipe invalide', () => {
     const team = { name: '', players: [] };
-    expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
-  });
-
-  test('Erreur - Equipe vide', () => {
-    const team = { name: 'Les cowboys', players: [] };
-    expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
-  });
-
-  test('Erreur - Valeur null dans les joueurs d\'une équipe', () => {
-    const team = { name: 'Les cowboys', players: [null] };
-    expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
-  });
-
-  test('Erreur - Valeur null dans le nom d\'une équipe', () => {
-    const team = { name: null, players: ["Alice","Fabien"] };
     expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
   });
 
   test('devrait lancer une erreur lors du démarrage du tournoi avec un nombre insuffisant d\'équipes', () => {
     const team = { name: 'Les Solitaires', players: ['Alice'] };
     tournament.addTeam(team);
-    expect(() => tournament.startTournament()).toThrow("Pas assez d'équipes pour commencer le tournoi");
-  });
-
-  test('Erreur - Tournoi sans équipe', () => {
     expect(() => tournament.startTournament()).toThrow("Pas assez d'équipes pour commencer le tournoi");
   });
 
@@ -97,4 +70,34 @@ describe('Tournament', () => {
     expect(tournament.status).toBe('terminé');
     expect(tournament.winner).toBe('Équipe 1');
   });
+
+  test('Erreur - Equipe vide', () => {
+    const team = { name: 'Les cowboys', players: [] };
+    expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
+  });
+
+  test('Erreur - Valeur null dans les joueurs d\'une équipe', () => {
+    const team = { name: 'Les cowboys', players: [null] };
+    expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
+  });
+
+  test('Erreur - Tournoi sans équipe', () => {
+    expect(() => tournament.startTournament()).toThrow("Pas assez d'équipes pour commencer le tournoi");
+  });
+
+  test('Erreur - Valeur null dans le nom d\'une équipe', () => {
+    const team = { name: null, players: ["Alice","Fabien"] };
+    expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
+  });
+
+  test('Erreur - Equipes en double', () => {
+    const team1 = { name: 'Les Champions', players: ['Alice', 'Bob'] };
+    const team2 = { name: 'Les Champions', players: ['Alice', 'Bob'] };
+    tournament.addTeam(team1);
+    expect(() => tournament.addTeam(team2)).toThrow("Équipe déjà existante");
+
+  });
+
+
+
 });
