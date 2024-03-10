@@ -15,6 +15,17 @@ class Tournament {
       this.teams.push(team);
     }
 
+    removeTeam(teamName) {
+      //Cherche l'index de la team via son name 
+      const index = this.teams.findIndex(team => team.name === teamName);
+      //Si l'index est égale à -1, alors l'équipe n'existe pas et donc on déclenche une erreur
+      if (index === -1) {
+          throw new Error("L'équipe spécifiée n'existe pas dans le tournoi");
+      }
+      this.teams.splice(index, 1);
+      //1 car on supprime qu'une équipe selon l'index définit
+  }
+
     getTeamNames() {
         return this.teams.map(team => team.name);
     }
