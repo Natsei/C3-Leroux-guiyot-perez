@@ -14,6 +14,10 @@ class Tournament {
       }
       this.teams.push(team);
     }
+
+    getTeamNames() {
+        return this.teams.map(team => team.name);
+    }
   
     getNumberOfTeams() {
       return this.teams.length;
