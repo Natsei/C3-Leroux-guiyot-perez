@@ -43,6 +43,27 @@ Ce plan de test vise à garantir que toutes les fonctionnalités de la classe `T
    - Action : Enregistrer les résultats de tous les matchs.
    - Attendu : Le tournoi se termine et un vainqueur est déclaré.
 
+7. **Création d'une équipe vide :**
+   - Action : Enregistrer une équipe sans joueurs.
+   - Attendu : Une exception est levée.
+
+8. **Création d'une équipe avec une valeur null à la place des joueurs :**
+   - Action : Enregistrer une équipe avec une valeur null à la place des joueurs.
+   - Attendu : Une exception est levée.
+
+9. **Création d'une équipe avec une valeur null à la place du nom :**
+   - Action : Enregistrer une équipe avec une valeur null à la place du nom.
+   - Attendu : Une exception est levée.
+
+10. **Création d'un tournoi sans équipe :**
+   - Action : Enregistrer un tournoi sans équipe.
+   - Attendu : Une exception est levée.
+
+11. **Création d'équipes en double :**
+   - Action : Enregistrer une équipe dont le nom est similaire à une autre équipe déjà présente dans le tournoi.
+   - Attendu : Une exception est levée.
+
+
 #### 6. Critères d'Acceptation
 - Tous les cas de test doivent passer avec succès pour que la fonctionnalité soit considérée comme conforme.
 

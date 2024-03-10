@@ -81,13 +81,13 @@ describe('Tournament', () => {
     expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
   });
 
-  test('Erreur - Tournoi sans équipe', () => {
-    expect(() => tournament.startTournament()).toThrow("Pas assez d'équipes pour commencer le tournoi");
-  });
-
   test('Erreur - Valeur null dans le nom d\'une équipe', () => {
     const team = { name: null, players: ["Alice","Fabien"] };
     expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
+  });
+
+  test('Erreur - Tournoi sans équipe', () => {
+    expect(() => tournament.startTournament()).toThrow("Pas assez d'équipes pour commencer le tournoi");
   });
 
   test('Erreur - Equipes en double', () => {
