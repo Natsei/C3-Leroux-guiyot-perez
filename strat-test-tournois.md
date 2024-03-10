@@ -7,6 +7,7 @@
 #### 2. Portée des Tests
 - **Inclus (In Scope) :**
   - Ajout d'équipes valides et invalides.
+  - Suppression équipe
   - Démarrage du tournoi avec une vérification du nombre d'équipes.
   - Planification des matchs lors du démarrage du tournoi.
   - Enregistrement des résultats des matchs et détermination du vainqueur.
