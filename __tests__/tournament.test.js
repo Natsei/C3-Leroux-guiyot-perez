@@ -43,6 +43,14 @@ describe('Tournament', () => {
     expect(tournament.matches[0].winner).toBe('Équipe 1');
   });
 
+  test('devrait retourner les noms des équipes correctement', () => {
+    const team1 = { name: 'Équipe 1', players: ['Alice', 'Bob'] };
+    const team2 = { name: 'Équipe 2', players: ['Charlie', 'David'] };
+    tournament.addTeam(team1);
+    tournament.addTeam(team2);
+    expect(tournament.getTeamNames()).toEqual(['Équipe 1', 'Équipe 2']);
+  });  
+
   test('devrait terminer le tournoi lorsque tous les résultats des matchs sont enregistrés', () => {
     const team1 = { name: 'Équipe 1', players: ['Alice', 'Bob'] };
     const team2 = { name: 'Équipe 2', players: ['Charlie', 'David'] };
