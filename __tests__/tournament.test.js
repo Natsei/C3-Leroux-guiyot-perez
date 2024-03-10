@@ -49,7 +49,16 @@ describe('Tournament', () => {
     tournament.addTeam(team1);
     tournament.addTeam(team2);
     expect(tournament.getTeamNames()).toEqual(['Équipe 1', 'Équipe 2']);
+  });
+
+  test('devrait retourner les noms des équipes correctement', () => {
+    const team1 = { name: 'Équipe 1', players: ['Alice', 'Bob'] };
+    const team2 = { name: 'Équipe 2', players: ['Charlie', 'David'] };
+    tournament.addTeam(team1);
+    tournament.addTeam(team2);
+    expect(tournament.getTeamNames()).toEqual(['Équipe 1', 'Équipe 2']);
   });  
+
 
   test('devrait terminer le tournoi lorsque tous les résultats des matchs sont enregistrés', () => {
     const team1 = { name: 'Équipe 1', players: ['Alice', 'Bob'] };
@@ -62,6 +71,7 @@ describe('Tournament', () => {
     expect(tournament.winner).toBe('Équipe 1');
   });
 
+<<<<<<< HEAD
   test('devrait retirer correctement une équipe', () => {
     const team1 = { name: 'Équipe 1', players: ['Alice', 'Bob'] };
     const team2 = { name: 'Équipe 2', players: ['Charlie', 'David'] };
@@ -90,4 +100,35 @@ test('devrait retourner le nombre correct d\'équipes', () => {
   expect(tournament.getNumberOfTeams()).toBe(3);
   //Ici, on a donc bien 3 équipes qui sont censés être crées
   });
+=======
+  test('Erreur - Equipe vide', () => {
+    const team = { name: 'Les cowboys', players: [] };
+    expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
+  });
+
+  test('Erreur - Valeur null dans les joueurs d\'une équipe', () => {
+    const team = { name: 'Les cowboys', players: [null] };
+    expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
+  });
+
+  test('Erreur - Valeur null dans le nom d\'une équipe', () => {
+    const team = { name: null, players: ["Alice","Fabien"] };
+    expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
+  });
+
+  test('Erreur - Tournoi sans équipe', () => {
+    expect(() => tournament.startTournament()).toThrow("Pas assez d'équipes pour commencer le tournoi");
+  });
+
+  test('Erreur - Equipes en double', () => {
+    const team1 = { name: 'Les Champions', players: ['Alice', 'Bob'] };
+    const team2 = { name: 'Les Champions', players: ['Alice', 'Bob'] };
+    tournament.addTeam(team1);
+    expect(() => tournament.addTeam(team2)).toThrow("Équipe déjà existante");
+
+  });
+
+
+
+>>>>>>> 6c32a76a91c5d9b3d8e29a675835393662f5a4fd
 });

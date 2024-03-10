@@ -9,8 +9,12 @@ class Tournament {
     }
   
     addTeam(team) {
-      if (!team.name || !team.players || team.players.length === 0) {
+      if (!team.name || !team.players || team.players.length === 0 || !Array.isArray(team.players) || team.players.length === 0 || !team.players.every(player => typeof player === 'string')) {
         throw new Error("Données de l'équipe invalides");
+      }
+
+      if (this.teams.some(existingTeam => existingTeam.name === team.name)) {
+        throw new Error("Équipe déjà existante");
       }
       this.teams.push(team);
     }

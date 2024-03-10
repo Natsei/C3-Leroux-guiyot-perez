@@ -63,6 +63,7 @@ Ce plan de test vise à garantir que toutes les fonctionnalités de la classe `T
    - Action : Enregistrer une équipe dont le nom est similaire à une autre équipe déjà présente dans le tournoi.
    - Attendu : Une exception est levée.
 
+<<<<<<< HEAD
 12. **Retrait d'une équipe :**
    - Action : Retirer une équipe du tournoi.
    - Attendu : L'équipe est retirée avec succès du tournoi.
@@ -74,6 +75,8 @@ Ce plan de test vise à garantir que toutes les fonctionnalités de la classe `T
 14. **Récupération du nombre d'équipes :**
    - Action : Ajouter plusieurs équipes au tournoi.
    - Attendu : Le nombre correct d'équipes est retourné.
+=======
+>>>>>>> 6c32a76a91c5d9b3d8e29a675835393662f5a4fd
 
 #### 6. Critères d'Acceptation
 - Tous les cas de test doivent passer avec succès pour que la fonctionnalité soit considérée comme conforme.
