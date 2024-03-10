@@ -61,4 +61,40 @@ describe('Tournament', () => {
     expect(tournament.status).toBe('terminé');
     expect(tournament.winner).toBe('Équipe 1');
   });
+
+  //Test de gestion des équipes lorsqu'on retire une équipe
+test('devrait retirer correctement une équipe', () => {
+  const team1 = { name: 'Équipe 1', players: ['Alice', 'Bob'] };
+  const team2 = { name: 'Équipe 2', players: ['Charlie', 'David'] };
+  tournament.addTeam(team1);
+  tournament.addTeam(team2);
+  tournament.removeTeam('Équipe 1');
+  expect(tournament.teams.length).toBe(1);
+  expect(tournament.teams).not.toContain(team1);
+});
+
+//Test de vérification de tournamentType
+test('devrait définir correctement le type de tournoi', () => {
+  expect(tournament.tournamentType).toBe('Élimination directe');
+});
+
+test('devrait gérer correctement les matchs en cours et terminés', () => {
+  const team1 = { name: 'Équipe 1', players: ['Alice', 'Bob'] };
+  const team2 = { name: 'Équipe 2', players: ['Charlie', 'David'] };
+  const team3 = { name: 'Équipe 3', players: ['Eve', 'Frank'] };
+  tournament.addTeam(team1);
+  tournament.addTeam(team2);
+  tournament.addTeam(team3);
+  tournament.startTournament();
+  
+  tournament.recordMatchResult(0, 'Équipe 1'); //Match 1: Équipe 1 vs Équipe 2
+  tournament.recordMatchResult(1, 'Équipe 3'); //Match 2: Équipe 3 vs Équipe 2
+  
+  expect(tournament.currentMatches.length).toBe(0); //Aucun match en cours après les enregistrements
+  expect(tournament.finishedMatches.length).toBe(2); //Deux matchs terminés après les enregistrements
+  
+  //Vérifier les résultats des matchs
+  expect(tournament.matches[0].winner).toBe('Équipe 1');
+  expect(tournament.matches[1].winner).toBe('Équipe 3');
+  });
 });
