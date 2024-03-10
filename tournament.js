@@ -9,7 +9,7 @@ class Tournament {
     }
   
     addTeam(team) {
-      if (!team.name || !team.players || team.players.length === 0) {
+      if (!team.name || !team.players || team.players.length === 0 || !Array.isArray(team.players) || team.players.length === 0 || !team.players.every(player => typeof player === 'string')) {
         throw new Error("Données de l'équipe invalides");
       }
 

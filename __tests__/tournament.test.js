@@ -31,6 +31,16 @@ describe('Tournament', () => {
     expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
   });
 
+  test('Erreur - Valeur null dans les joueurs d\'une équipe', () => {
+    const team = { name: 'Les cowboys', players: [null] };
+    expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
+  });
+
+  test('Erreur - Valeur null dans le nom d\'une équipe', () => {
+    const team = { name: null, players: ["Alice","Fabien"] };
+    expect(() => tournament.addTeam(team)).toThrow("Données de l'équipe invalides");
+  });
+
   test('devrait lancer une erreur lors du démarrage du tournoi avec un nombre insuffisant d\'équipes', () => {
     const team = { name: 'Les Solitaires', players: ['Alice'] };
     tournament.addTeam(team);
